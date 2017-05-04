@@ -13,6 +13,11 @@ SimpleMonitor documentation is here: http://jamesoff.github.io/simplemonitor/
 # Example Workflow
 
 1. User tells bot - "check host.domain.com"
-2. Bot initiates one (or maybe a few) round(s) of checks against host.domain.com via the HTTP health checker 
+2. Bot initiates one (or maybe a few) round(s) of checks host.domain.com via the HTTP health checker 
    (sits in network.py inside the Monitors folder)
 3. Bot returns text to user - "Web service responded with 200/OK in 0.733s"
+
+# Dependencies
+
+1. Spark Bot - https://github.com/imapex/boilerplate_sparkbot
+2. SimpleMonitor - http://jamesoff.github.io/simplemonitor/
