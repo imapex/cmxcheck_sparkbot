@@ -1,5 +1,5 @@
 FROM python:2-alpine
-MAINTAINER Hank Preston <hank.preston@gmail.com>
+MAINTAINER Patrick Stephens <patsteph@cisco.com>
 EXPOSE 5000
 
 # Install basic utilities
