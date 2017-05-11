@@ -2,15 +2,23 @@
 
 # Description
 
-This is a simple Spark bot interface to query the responsiveness of a web service. Its use is not limited to CMX Cloud health checking but that is the focus of this project.
+This is a simple Spark bot to query the status of a web service. Its use is not limited to CMX Cloud health checking but that is the focus of this project.
 
-# Example Workflow
+# Components
 
-1. User tells bot - "check https://host.domain.com"
-2. Bot initiates one (or maybe a few) round(s) of checks https://host.domain.com via the HTTP health checker (currently in checker.py)
-3. Bot returns text to user - "Web service responded with 200/OK in 0.733s"
+1. bot.py: top level bot code built from the boilerplate_sparkbot repo.
+2. checker.py: function that retrieves the HTTP status of a given host.
 
-# Dependencies
+# How to Use
 
-1. Spark Bot - https://github.com/imapex/boilerplate_sparkbot
-2. urllib2 module
+The bot can be activated by starting a conversation with **cmxcheck@sparkbot.io**
+
+1. User tells bot - "check host.domain.com"
+2. Bot initiates one (or maybe a few) round(s) of checks against host.domain.com via the function in checker.py
+3. Bot returns text to user - "the response code from <host.domain.com> was <http-response-code>
+
+# Supported commands
+
+* check
+* /help: get help
+* /echo: mirror the user's input
