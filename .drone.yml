@@ -6,8 +6,15 @@ build:
 
 publish:
   docker:
-    repo: $$DOCKER_USERNAME/$$DOCKER_REPO
+    repo: $$DOCKER_ORG/$$DOCKER_REPO
     tag: "latest"
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+    email: $$DOCKER_EMAIL
+
+  docker:
+    repo: $$DOCKER_ORG/$$DOCKER_REPO
+    tag: "$${BRANCH##feature/}"
     username: $$DOCKER_USERNAME
     password: $$DOCKER_PASSWORD
     email: $$DOCKER_EMAIL
@@ -21,9 +28,22 @@ deploy:
       username: $$MANTL_USERNAME
       password: $$MANTL_PASSWORD
     urls:
-      - https://$$MANTL_CONTROL/marathon/v2/apps/$$DOCKER_USERNAME/$$BOT_NAME/restart?force=true
+      - https://$$MANTL_CONTROL/marathon/v2/apps/$$PROD_APP_NAME/restart?force=true
     when:
       branch: "master"
+
+deploy:
+  webhook:
+    image: plugins/drone-webhook
+    skip_verify: true
+    method: POST
+    auth:
+      username: $$MANTL_USERNAME
+      password: $$MANTL_PASSWORD
+    urls:
+      - https://$$MANTL_CONTROL/marathon/v2/apps/$$TEST_APP_NAME/restart?force=true
+    when:
+      branch: "test"
 
 notify:
   # This section will send build notifications via Cisco Spark.
