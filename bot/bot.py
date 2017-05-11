@@ -61,6 +61,7 @@ from ciscosparkapi import CiscoSparkAPI
 import os
 import sys
 import json
+from helpers.checker import get_status_code
 
 # Create the Flask application that provides the bot foundation
 app = Flask(__name__)
@@ -71,7 +72,8 @@ app = Flask(__name__)
 # The value is the help message sent for the command
 commands = {
     "/echo": "Reply back with the same message sent.",
-    "/help": "Get help."
+    "/help": "Get help.",
+    "check": "Get status of site"
 }
 
 
@@ -218,10 +220,16 @@ def process_incoming_message(post_data):
         reply = send_help(post_data)
     elif command in ["/echo"]:
         reply = send_echo(message)
+    elif command in ["check"]:
+        reply = process_check(message)
 
     # send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
+def process_check(incoming):
+    site = incoming.text.split()[1]
+    reply = get_status_code(site)
+    return "The response code from {} was {}".format(site,reply)
 
 # Sample command function that just echos back the sent message
 def send_echo(incoming):
