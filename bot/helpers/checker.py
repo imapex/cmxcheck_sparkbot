@@ -18,7 +18,3 @@ def get_status_code(host, path="/"):
         return conn.getresponse().status
     except StandardError as e:
         return e
-
-
-print get_status_code("stackoverflow.com") # prints 200
-print get_status_code("stackoverflow.com", "/nonexistant") # prints 404
