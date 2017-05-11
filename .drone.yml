@@ -5,23 +5,12 @@ build:
     - echo "Building..."
 
 publish:
-  # This section will publish a docker image with a tag matching the git branch
-  docker:
-    repo: $$DOCKER_USERNAME/$$DOCKER_REPO
-    tag: "$${BRANCH##feature/}"
-    username: $$DOCKER_USERNAME
-    password: $$DOCKER_PASSWORD
-    email: $$DOCKER_EMAIL
-
-  # This section will publish a docker image tagged "latest" if the branch is master
   docker:
     repo: $$DOCKER_USERNAME/$$DOCKER_REPO
     tag: "latest"
     username: $$DOCKER_USERNAME
     password: $$DOCKER_PASSWORD
     email: $$DOCKER_EMAIL
-    when:
-      branch: "master"
 
 deploy:
   webhook:
