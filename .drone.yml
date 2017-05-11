@@ -6,8 +6,15 @@ build:
 
 publish:
   docker:
-    repo: $$DOCKER_USERNAME/$$DOCKER_REPO
+    repo: $$DOCKER_ORG/$$DOCKER_REPO
     tag: "latest"
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+    email: $$DOCKER_EMAIL
+
+  docker:
+    repo: $$DOCKER_ORG/$$DOCKER_REPO
+    tag: "$${BRANCH##feature/}"
     username: $$DOCKER_USERNAME
     password: $$DOCKER_PASSWORD
     email: $$DOCKER_EMAIL
