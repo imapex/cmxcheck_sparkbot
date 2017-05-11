@@ -4,6 +4,10 @@
 
 This is a simple Spark bot to query the status of a web service. Its use is not limited to CMX Cloud health checking but that is the focus of this project.
 
+# Demo
+
+[![cmxcheck sparkbot demo](readme_resources/cmxcheck_demo_thumb.jpg)](https://youtu.be/zDWVMBLwxaY)
+
 # Components
 
 1. bot.py: top level bot code built from the boilerplate_sparkbot repo.
