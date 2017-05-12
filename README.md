@@ -33,7 +33,7 @@ The bot can be activated by starting a conversation with **cmxcheck@sparkbot.io*
 2. Improve error checking.
 3. Improve status code feedback to user.
 4. Add more checks.
-  * RTT
-  * DNS
-  * SRV
+    * RTT
+    * DNS
+    * SRV
 5. CMX API integration for stats
