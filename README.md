@@ -10,8 +10,8 @@ This is a simple Spark bot to query the status of a web service. Its use is not 
 
 # Components
 
-1. bot.py: top level bot code built from the boilerplate_sparkbot repo.
-2. checker.py: function that retrieves the HTTP status of a given host.
+1. bot/bot.py: top level bot code built from the boilerplate_sparkbot repo.
+2. bot/helpers/checker.py: function that retrieves the HTTP status of a given host.
 
 # How to Use
 
