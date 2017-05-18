@@ -73,7 +73,7 @@ app = Flask(__name__)
 commands = {
     "/echo": "Reply back with the same message sent.",
     "/help": "Get help.",
-    "check": "Get status of site. (EXAMPLE www.cisco.com)"
+    "check": "Get status of site.  ex: www.cisco.com",
 }
 
 
