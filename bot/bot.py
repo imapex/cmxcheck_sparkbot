@@ -62,6 +62,7 @@ import os
 import sys
 import json
 from helpers.checker import get_status_code
+from helpers.load import get_load_time
 
 # Create the Flask application that provides the bot foundation
 app = Flask(__name__)
@@ -74,6 +75,7 @@ commands = {
     "/echo": "Reply back with the same message sent.",
     "/help": "Get help.",
     "check": "Get status of site.  ex: www.cisco.com",
+    "load":  "Get site load and dns resolve time",
 }
 
 
@@ -222,6 +224,8 @@ def process_incoming_message(post_data):
         reply = send_echo(message)
     elif command in ["check"]:
         reply = process_check(message)
+    elif command in ["load"]:
+        reply = process_load(message)
 
     # send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
@@ -231,6 +235,13 @@ def process_check(incoming):
     reply = get_status_code(site)
     return "The response code from {} was {}".format(site,reply)
 
+def process_load(incoming):
+    site = incoming.text.split()[1]
+    reply = get_load_time(site)
+    return 'DNS time            = %.2f ms' % ((dns_end - dns_start) * 1000)
+    return 'HTTP handshake time = %.2f ms' % ((handshake_end - handshake_start) * 1000)
+    return 'HTTP data time      = %.2f ms' % ((data_end - data_start) * 1000)
+  
 # Sample command function that just echos back the sent message
 def send_echo(incoming):
     # Get sent message
