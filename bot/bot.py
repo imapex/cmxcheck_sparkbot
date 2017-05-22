@@ -75,7 +75,7 @@ commands = {
     "/echo": "Reply back with the same message sent.",
     "/help": "Get help.",
     "check": "Get status of site.  ex: www.cisco.com",
-    "load":  "Get site load and dns resolve time",
+    "load" : "Get site load and dns resolve time",
 }
 
 
